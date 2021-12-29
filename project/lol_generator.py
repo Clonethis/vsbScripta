@@ -1,7 +1,7 @@
 # match
 # 1,2,3
 # 10;3;2,8;2;0,2;5;4
-#k,a,d for each player divided by column
+# k,a,d for each player divided by column
 
 # 8,4,9
 # 1;4;10,5;1;2,0;2;8
@@ -37,34 +37,45 @@ def createUser():
 
 def createGame(userArray):
     # game = "match"
-    if len(userArray)>=6:
+    if len(userArray) >= 6:
         usedUser = len(userArray[-1])+3
-        for game in range(random.randint(100,200)):
+        for game in range(random.randint(100, 200)):
             blu = []
             red = []
             statsRed = []
             statsBlu = []
-            usedUsers = userArray
-            teams=["red","blu"]
-
+            usedArray = []
+            teams = ["red", "blu"]
+            for i in range(len(userArray)):
+                usedArray.append(i)
             for i in range(3):
                 for x in range(3):
-                    statsR=[]
+                    statsR = []
                     statsB = []
-                    statsR.append(random.randint(0,20))
-                    statsB.append(random.randint(0,20))
+                    statsR.append(random.randint(0, 20))
+                    statsB.append(random.randint(0, 20))
                 statsBlu.append(statsB)
                 statsRed.append(statsR)
-                blu.append(random.randint(0, len(userArray)-1))
-                usedUsers[blu[-1]]=usedUser
-                randomUser=random.randint(0,len(userArray)-1)
+                # blu.append(random.randint(0, len(userArray)-2))
+                # usedArray[blu[-1]] = usedUser
+                users = []
+                for i in range(5):
+                    user = random.randint(0, len(usedArray)-2)
+                    users.append(user)
+                    usedArray.pop(user)
+                for i in range(len(users)):
+                    blu.append(users[i])
+                    i += 1
+                    red.append(users[i])
+                randomUser = random.randint(0, len(userArray)-2)
+
                 # if(usedUsers[randomUser]==usedUser):
-                while usedUsers[randomUser]==usedUser:
-                    randomUser=random.randint(0,len(userArray)-1)
+                # while usedArray[randomUser] == usedUser:
+                randomUser = random.randint(0, len(userArray)-2)
                 red.append(randomUser)
-                
+
             whowon = random.choice(teams)
-            file = open('game.txt',"w")
+            file = open('game.txt', "w")
             file.writelines("match")
             file.writelines(str(red))
             for y in statsRed:
@@ -76,14 +87,12 @@ def createGame(userArray):
             file.close()
             # toFile("game.txt",red,',')
 
-            
-                    # red.append(random.randint(0, len(userArray)))
-    
+            # red.append(random.randint(0, len(userArray)))
+
         # if bluUsere in blu:
-    
 
 
-def toFile(fileName, array,separator):
+def toFile(fileName, array, separator):
 
     file = open(fileName, 'w')
     for items in array:
@@ -100,11 +109,11 @@ def createUserFile():
     baseUserArray = []
     for i in range(random.randint(9, 20)):
         baseUserArray.append((str(i))+","+createUser())
-    toFile("users.txt", baseUserArray,'\n')
+    toFile("users.txt", baseUserArray, '\n')
     return baseUserArray
 
 
-# 
+#
 
 
 baseUserArray = createUserFile()
