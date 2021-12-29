@@ -303,6 +303,7 @@ void watch_draw_time(TGA *tga, int hours, int minutes){
         }
         
 }
+
 int main(int argc, char *argv[]) {
     
     int hours = atoi(argv[1]);
@@ -311,7 +312,7 @@ int main(int argc, char *argv[]) {
     TGA * tga = tga_new( 368, 448, 20 );
 
     watch_draw_time(tga,hours,minutes);
-    tga_write( tga, "test.tga" );
+    tga_write( tga, "aw.tga" );
     tga_free( &tga );
 
     return 0;
