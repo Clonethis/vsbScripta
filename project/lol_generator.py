@@ -1,6 +1,8 @@
 # match
 # 1,2,3
 # 10;3;2,8;2;0,2;5;4
+#k,a,d for each player divided by column
+
 # 8,4,9
 # 1;4;10,5;1;2,0;2;8
 # red
@@ -34,22 +36,58 @@ def createUser():
 
 
 def createGame(userArray):
-    game = "match"
-    blu = []
-    red = []
-    for i in range(3):
-        blu.append(random.randint(0, len(userArray)))
-    for x in range(3):
-        bluUsere = random.randint(0, len(userArray))
+    # game = "match"
+    if len(userArray)>=6:
+        usedUser = len(userArray[-1])+3
+        for game in range(random.randint(100,200)):
+            blu = []
+            red = []
+            statsRed = []
+            statsBlu = []
+            usedUsers = userArray
+            teams=["red","blu"]
+
+            for i in range(3):
+                for x in range(3):
+                    statsR=[]
+                    statsB = []
+                    statsR.append(random.randint(0,20))
+                    statsB.append(random.randint(0,20))
+                statsBlu.append(statsB)
+                statsRed.append(statsR)
+                blu.append(random.randint(0, len(userArray)-1))
+                usedUsers[blu[-1]]=usedUser
+                randomUser=random.randint(0,len(userArray)-1)
+                # if(usedUsers[randomUser]==usedUser):
+                while usedUsers[randomUser]==usedUser:
+                    randomUser=random.randint(0,len(userArray)-1)
+                red.append(randomUser)
+                
+            whowon = random.choice(teams)
+            file = open('game.txt',"w")
+            file.writelines("match")
+            file.writelines(str(red))
+            for y in statsRed:
+                print(y)
+                # file.writelines(statsRed)
+            # file.writelines(blu)
+            # file.writelines(statsBlu)
+            # file.writelines(whowon)
+            file.close()
+            # toFile("game.txt",red,',')
+
+            
+                    # red.append(random.randint(0, len(userArray)))
+    
         # if bluUsere in blu:
-    while
+    
 
 
-def toFile(fileName, array):
+def toFile(fileName, array,separator):
 
     file = open(fileName, 'w')
     for items in array:
-        file.writelines(items+'\n')
+        file.writelines(items+separator)
 
     file.close()
 
@@ -62,20 +100,16 @@ def createUserFile():
     baseUserArray = []
     for i in range(random.randint(9, 20)):
         baseUserArray.append((str(i))+","+createUser())
-    toFile("users.txt", baseUserArray)
+    toFile("users.txt", baseUserArray,'\n')
     return baseUserArray
 
 
-def createGameFile(baseUserArray):
-    baseGamesArray = []
-    for i in range(random.randint(80, 300)):
-        baseGamesArray.append((createGame(baseUserArray)))
-    toFile("game.txt", baseGamesArray)
+# 
 
 
-# mobile = ['samsung', 'redmi', 'oneplus']
 baseUserArray = createUserFile()
-createGameFile(baseUserArray)
+createGame(baseUserArray)
+# createGameFile(baseUserArray)
 # file = open('f1.txt', 'w')
 # for items in ar00ray:
 #     file.writelines(items+'\n')
