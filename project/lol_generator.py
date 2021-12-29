@@ -33,8 +33,16 @@ def createUser():
     return res
 
 
-def createGame(array):
-    pass
+def createGame(userArray):
+    game = "match"
+    blu = []
+    red = []
+    for i in range(3):
+        blu.append(random.randint(0, len(userArray)))
+    for x in range(3):
+        bluUsere = random.randint(0, len(userArray))
+        # if bluUsere in blu:
+    while
 
 
 def toFile(fileName, array):
@@ -50,15 +58,24 @@ def writeToFile(nameOfFile):
     pass
 
 
-baseUserArray = []
-baseGamesArray = []
-for i in range(random.randint(9, 20)):
-    baseUserArray.append((str(i))+","+createUser())
-toFile("users.txt", baseUserArray)
-for i in range(random.randint(80, 300)):
-    baseGamesArray.append((i,))
-# mobile = ['samsung', 'redmi', 'oneplus']
+def createUserFile():
+    baseUserArray = []
+    for i in range(random.randint(9, 20)):
+        baseUserArray.append((str(i))+","+createUser())
+    toFile("users.txt", baseUserArray)
+    return baseUserArray
 
+
+def createGameFile(baseUserArray):
+    baseGamesArray = []
+    for i in range(random.randint(80, 300)):
+        baseGamesArray.append((createGame(baseUserArray)))
+    toFile("game.txt", baseGamesArray)
+
+
+# mobile = ['samsung', 'redmi', 'oneplus']
+baseUserArray = createUserFile()
+createGameFile(baseUserArray)
 # file = open('f1.txt', 'w')
 # for items in ar00ray:
 #     file.writelines(items+'\n')
