@@ -39,6 +39,9 @@ def createGame(userArray):
     # game = "match"
     if len(userArray)>=6:
         usedUser = len(userArray[-1])+3
+        print("used",usedUser)
+        print(userArray)
+        print("user arraylen ",len(userArray)-2 )
         for game in range(random.randint(100,200)):
             blu = []
             red = []
@@ -47,28 +50,32 @@ def createGame(userArray):
             usedUsers = userArray
             teams=["red","blu"]
 
-            for i in range(3):
+            for i in range(3)
+                statsR=[]
+                statsB = []
                 for x in range(3):
-                    statsR=[]
-                    statsB = []
                     statsR.append(random.randint(0,20))
                     statsB.append(random.randint(0,20))
                 statsBlu.append(statsB)
                 statsRed.append(statsR)
-                blu.append(random.randint(0, len(userArray)-1))
-                usedUsers[blu[-1]]=usedUser
-                randomUser=random.randint(0,len(userArray)-1)
+                blu.append(random.randint(0, len(userArray)-2))
+                # print(f"blu: {blu[-1]}")
+                usedUsers[blu[-1]]=str(usedUser)
+                print(f"usedUsers: {usedUsers}")
+                # print(f"used Users: {usedUsers}")
+                randomUser=random.randint(0,len(userArray)-2)
                 # if(usedUsers[randomUser]==usedUser):
-                while usedUsers[randomUser]==usedUser:
-                    randomUser=random.randint(0,len(userArray)-1)
+                # while usedUsers[randomUser]==usedUser:
+                #     randomUser=random.randint(0,len(userArray)-1)
+                #     print("nice")
                 red.append(randomUser)
-                
+            print(f"stats:red {statsRed}\nstats:blu {statsBlu}")
             whowon = random.choice(teams)
             file = open('game.txt',"w")
             file.writelines("match")
             file.writelines(str(red))
-            for y in statsRed:
-                print(y)
+            # for y in statsRed:
+                # print(y)
                 # file.writelines(statsRed)
             # file.writelines(blu)
             # file.writelines(statsBlu)
