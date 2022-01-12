@@ -1,8 +1,19 @@
 # Useful links:
 
-## c outputing to file:
 
 https://codeforwin.org/2018/01/c-program-create-file-write-contents.html
+
+fopen
+https://linux.die.net/man/3/fopen
+
+fgets
+https://linux.die.net/man/3/fgets
+
+strtok -> token from string
+https://linux.die.net/man/3/strtok
+
+Types:
+https://www.tutorialspoint.com/how-do-i-convert-a-char-to-an-int-in-c-and-cplusplus
 
 ## svg basics headers:
 

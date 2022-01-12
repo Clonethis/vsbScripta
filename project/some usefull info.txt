@@ -1,0 +1,33 @@
+https://kelvin.cs.vsb.cz/task/1442/BRT0014/
+
+
+## FILE pointer -> 
+including its name, current position of the file, whether the file is being read or written,
+  The user does not need to Know the details, because the definitions obtained from stdio.h 
+include a structure declaration called FILE. The only declaration needed for a file pointer is symbolized by
+
+## fread ->
+(where *p,which are somewhat sized,size of object to read,from pointer file)
+might use to read files
+
+
+## read ->
+attempts to read nbites of data
+!! not supported
+
+
+
+
+
+
+int main(int argc,char **argv)
+{
+  // argc -> number of orguments 
+  // argv[]-> argument value
+
+
+# SVG -> 
+
+## validator:
+    -https://validator.w3.org/#validate_by_input 
+

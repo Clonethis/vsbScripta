@@ -38,7 +38,7 @@ def createUser():
 def createGame(userArray):
     # game = "match"
     if len(userArray) >= 6:
-        usedUser = len(userArray[-1])+3
+        usedUser = len(userArray[-1])+3 
         print("used",usedUser)
         print(userArray)
         print("user arraylen ",len(userArray)-2 )
