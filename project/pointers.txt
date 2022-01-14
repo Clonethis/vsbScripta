@@ -1,0 +1,4 @@
+pointers.txt
+
+pointer p +1 -> goes to next int. -> adds one sizeof(int/char/float)
+valgrind -> memory stuff
