@@ -41,14 +41,7 @@ run:
 	nice f1.txt game.txt
 nice2:
 	gcc fileopener.c -o nice $(ASAN_FLAGS)
-	nice users.txt matchData.txt 
+	nice users.txt matchData.txt
 svg:
 	gcc ./svgC/svg.c -o nice $(ASAN_FLAGS)
 	nice
-trial:
-	gcc trial.c -o nice
-	nice users.txt matchData.txt 
-overkill:
-	gcc -g trial.c -o nice
-	lldb nice users.txt matchData.txt 
-	run -flag1 -flag2

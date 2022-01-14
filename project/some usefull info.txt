@@ -15,8 +15,6 @@ might use to read files
 attempts to read nbites of data
 !! not supported
 
-## fseek -> 
-(* file , char <- value of bytes of how to change, position)
 
 
 
