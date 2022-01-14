@@ -8,6 +8,14 @@ void printArray(int *array,int length){
         printf("Value %d : %d\n",i,*(array+i));
     }
 }
+void printArrayC(char **array,int length,int elementLength){
+    for(int i = 0; i<=length;i++){
+        for(int x = 0;x <= elementLength;x++){
+
+        printf("Value %d : %c\n",i,array[i][x]);
+        }
+    }
+}
 int numberOfRows(FILE *file){
 int count = 0;
   for(char c=getc(file);c!=EOF;c=getc(file)){
@@ -39,52 +47,60 @@ int numberOfGames(FILE *file){
 }
 
 //  }
+int populatePlayersNames(char** playerNames[],int length,FILE *file,int name_size){
+char  c = 0;
+int playerNum = 0,countName = 0;
+        while(c!=EOF){
+        if(c==44){
+
+        while(c!='\n' && c>=35 && c<=122){
+          playerNames[playerNum][countName]=c;
+          c=getc(file);
+          countName++;
+          printf("%c",c);
+        }
+        countName= 0;
+        }
+        }
+        rewind(file);
+        return 0;
+  
+}
 int populatePlayersId(int* playerIds,int length,FILE *file){
-  int count =0,playerNum=0;
+  int countID =0,playerNum=0;
   char c='\n',id[20];
   rewind(file);
-  printf("nice");
-  printf("players[1] ids %d\n",playerIds[2]);
-  printf("players ids %d\n",*(playerIds));
-  printf("players ids+1 %d\n",*(playerIds+1));
   assert(playerIds);
-  for(int i = 0; i<=10;i++){
-      *(playerIds+i) = 0;
-      printf("players ids+%d - %d\n",i,*(playerIds+i));
-
-  }
+  
 //   char c=1;99
   while(c!=EOF){
     // 48->56 nums; 59 = ";" 44=","
     // c=getc(file);
-    printf("%c",c);
     if(c==10){
-        printf("run");
       c = getc(file);
       while(c!=44){
-        id[count] = c;
-        
-        count++;
-        printf("%c",id[count]);
+        id[countID] = c;
+        countID++;
+        // printf("%c",id[countID]);
         c = getc(file);
+      }
       }
       if(playerNum==length+1){
           break;
           return 1;
       }
-      printf("id %d\n",atoi(id));
-          printf("pnum %d\n",playerNum);
       playerIds[playerNum] = atoi(id);
       printf("Nice players %d\n",playerIds[playerNum]);
       for(int i= 0;i<20;i++){
           id[i]=0;
       }
-      count = 0;
+      countID = 0;
+
       playerNum++;
     }
     c=getc(file);
 
-  }
+  
 //   rewind(file);
 return 0;
 }
@@ -105,14 +121,16 @@ int main(int agc,char **argv)
     int players = numberOfRows(fplayer);
 
     // int* playerIds = (int*)calloc(players,sizeof(int));
-
+    int name_size = 20;
     int* playerIds[players];
-    char** playerNames[players][20];
+    char** playerNames[players][name_size];
     //   not working due to unknown bug
     // printf("playerIDS %d",);
     populatePlayersId(playerIds,players,fplayer);
-    populatePlayerNames(playerNames,players,fplayer);
+    populatePlayersNames(playerNames,players,fplayer,name_size);
+
     printArray(playerIds,players);
+    printArrayC(&playerNames,players,20);
     // TODO
     // populateGames()
 
